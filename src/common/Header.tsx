@@ -7,37 +7,63 @@ import logo from "../assets/logo/logo.svg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["HOME", "PRODUCTS", "ABOUT US", "TESTIMONIALS"];
+
+  //  Define nav items with matching section IDs
+  const navItems = [
+    { label: "HOME", href: "#hero" },
+    { label: "PRODUCTS", href: "#products" },
+    { label: "ABOUT US", href: "#about-us" },
+    { label: "TESTIMONIALS", href: "#testimonials" },
+  ];
+
+  //  Smooth scroll helper
+  type ScrollHandler = (e: React.MouseEvent<HTMLElement>, href: string) => void;
+
+  const handleScroll: ScrollHandler = (e, href) => {
+    e.preventDefault();
+    const target = document.querySelector<HTMLElement>(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
-    <section className="bg-white py-4 px-6 md:px-10 lg:px-20 relative z-50">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md py-4 px-6 md:px-10 lg:px-20 z-50">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div>
-          <a href="/home">
-            <img src={logo} alt="Logo" className="h-18 lg:h-26" />
+          <a href="#hero" onClick={(e) => handleScroll(e, "#hero")}>
+            <img src={logo} alt="Logo" className="h-14 lg:h-20" />
           </a>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:block">
-          <ul>
-            <li className="flex gap-8 xl:gap-20 text-base xl:text-lg font-medium">
-              {navItems.map((item, i) => (
-                <a key={i} href="/" className="relative group">
+          <ul className="flex gap-8 xl:gap-20 text-base xl:text-lg font-medium">
+            {navItems.map((item, i) => (
+              <li key={i}>
+                <a
+                  href={item.href}
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className="relative group"
+                >
                   <span className="transition-colors duration-300 group-hover:text-blue-700">
-                    {item}
+                    {item.label}
                   </span>
                   <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-700 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-              ))}
-            </li>
+              </li>
+            ))}
           </ul>
         </nav>
 
         {/* Desktop CTA Button */}
         <div className="hidden lg:block">
-          <button className="border-2 px-4 text-lg xl:text-xl py-2 hover:text-blue-700 rounded-2xl font-medium hover:border-blue-400 flex items-center gap-2 transition-all">
+          <button
+            onClick={(e) => handleScroll(e, "#contact")}
+            className="border-2 px-4 text-lg xl:text-xl py-2 hover:text-blue-700 rounded-2xl font-medium hover:border-blue-400 flex items-center gap-2 transition-all"
+          >
             Get In Touch
             <svg
               className="w-5 h-5"
@@ -91,7 +117,6 @@ const Header = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col h-full p-6 pt-20">
-                {/* Mobile Navigation */}
                 <nav className="flex-1">
                   <ul className="space-y-6">
                     {navItems.map((item, i) => (
@@ -102,21 +127,21 @@ const Header = () => {
                         transition={{ delay: 0.1 * i }}
                       >
                         <a
-                          href="/"
+                          href={item.href}
+                          onClick={(e) => handleScroll(e, item.href)}
                           className="block text-lg font-medium text-gray-700 hover:text-blue-700 transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
                         >
-                          {item}
+                          {item.label}
                         </a>
                       </motion.li>
                     ))}
                   </ul>
                 </nav>
 
-                {/* Mobile CTA Button */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={(e) => handleScroll(e, "#contact")}
                   className="w-full border-2 px-4 text-lg py-3 hover:text-blue-700 rounded-2xl font-medium hover:border-blue-400 flex items-center justify-center gap-2 transition-all"
                 >
                   Get In Touch
@@ -139,7 +164,7 @@ const Header = () => {
           </>
         )}
       </AnimatePresence>
-    </section>
+    </header>
   );
 };
 

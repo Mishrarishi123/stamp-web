@@ -1,9 +1,95 @@
-import React from 'react'
+"use client";
 
-const Products = () => {
+import { Gallery } from "../ui/Gallery";
+import {
+  STAMP_PRODUCTS,
+  VISITING_CARD_PRODUCTS,
+} from "../../constant/productData";
+
+export function Products() {
+  // Function to scroll any gallery by class name
+  const handleScroll = (galleryClass: string) => {
+    const gallery = document.querySelector(`.${galleryClass}`);
+    gallery?.scrollBy({ left: 300, behavior: "smooth" });
+  };
+
   return (
-    <div className='text-black'>Products</div>
-  )
-}
+    <main className="bg-background roboto-slab min-h-screen">
+      {/* Header */}
+      <div>
+        <div className="max-w-8xl mx-auto px-4 md:px-0 py-12 md:py-16">
+          <h1 className="text-4xl roboto-slab md:text-6xl font-black text-center mb-4">
+            PRODUCTS
+          </h1>
+          <p className="text-center text-muted-foreground font-medium text-2xl">
+            Crafted With Care, Designed To Impress.
+          </p>
+        </div>
+      </div>
 
-export default Products
+      {/* Content */}
+      <div className="max-w-7xl md:max-w-[90vw] lg:max-w-[84vw] mx-auto px-4 md:px-0 py-12 space-y-24">
+        {/* Stamps Section */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground">
+              Stamps
+            </h2>
+            <button
+              onClick={() => handleScroll("stamp-gallery")}
+              className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+              aria-label="Scroll stamps right"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+          <Gallery products={STAMP_PRODUCTS} galleryClass="stamp-gallery" />
+        </section>
+
+        {/* Visiting Cards Section */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground">
+              Visiting Cards
+            </h2>
+            <button
+              onClick={() => handleScroll("visiting-gallery")}
+              className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+              aria-label="Scroll visiting cards right"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+          <Gallery
+            products={VISITING_CARD_PRODUCTS}
+            galleryClass="visiting-gallery"
+          />
+        </section>
+      </div>
+    </main>
+  );
+}

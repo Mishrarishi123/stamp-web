@@ -63,7 +63,7 @@ export default function HeroSwiper() {
   };
 
   return (
-    <div className="relative h-[80vh] overflow-hidden bg-black select-none">
+    <div className="relative h-[100vh] overflow-hidden bg-black select-none">
       <AnimatePresence custom={direction} mode="popLayout">
         <motion.div
           key={SLIDES[currentSlide].id}

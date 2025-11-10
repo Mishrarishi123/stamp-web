@@ -1,27 +1,43 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+"use client";
 
 import Header from "./common/Header";
 import HeroSwiper from "./components/Hero/Hero";
-import Products from "./components/products/Products";
-// import Footer from "./common/Footer";
-// import Home from "./pages/Home";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import AboutUs from "./components/about/AboutUs";
+import Contact from "./components/contact/Contact";
+import { Products } from "./components/products/Products";
+import TestimonialCarousel from "./components/testimonial/Testimonial";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
-      <main className="min-h-screen  bg-slate-50">
-        <Routes>
-          <Route path="/" element={<HeroSwiper />} />
-          <Route path="/products" element={<Products />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
-        </Routes>
+
+      <main className="min-h-screen bg-slate-50 scroll-smooth">
+        {/* Hero Section */}
+        <section id="hero" className="scroll-mt-24">
+          <HeroSwiper />
+        </section>
+
+        {/* Products Section */}
+        <section id="products" className="scroll-mt-24">
+          <Products />
+        </section>
+
+        {/* About Us Section */}
+
+        <section id="about-us" className="scroll-mt-24">
+          <AboutUs />
+        </section>
+
+        <section>
+          <TestimonialCarousel />
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="scroll-mt-24">
+          <Contact />
+        </section>
       </main>
-      {/* <Footer /> */}
-    </BrowserRouter>
+    </>
   );
 }
-
-export default App;
