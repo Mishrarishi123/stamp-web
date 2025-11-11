@@ -181,11 +181,18 @@ export default function ContactPage() {
 // InfoCard Component
 function InfoCard({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="bg-white rounded-xl xl:rounded-3xl px-4 sm:px-6 py-4 sm:py-5 flex items-start gap-3 sm:gap-5 w-full">
-      <div className="shrink-0 flex items-start justify-center">{icon}</div>
-      <p className="text-xs sm:text-sm md:text-base text-black font-medium break-wrap leading-relaxed max-w-[260px] sm:max-w-none whitespace-normal">
+    <div className="bg-white rounded-xl xl:rounded-3xl px-4 sm:px-6 py-4 sm:py-5 flex items-start gap-4 sm:gap-5 w-full">
+      {/* Icon */}
+      <div className="shrink-0 flex items-center justify-center">{icon}</div>
+
+      {/* Text */}
+      <p
+        className="text-xs sm:text-sm md:text-base text-black font-medium leading-relaxed 
+                   break-all whitespace-normal max-w-full"
+      >
         {text}
       </p>
     </div>
   );
 }
+
