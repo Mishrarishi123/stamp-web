@@ -1,22 +1,38 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Gallery } from "../ui/Gallery";
 import {
   STAMP_PRODUCTS,
   VISITING_CARD_PRODUCTS,
 } from "../../constant/productData";
 
+// === Animation Variants ===
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7 },
+  },
+};
+
 export function Products() {
-  // Function to scroll any gallery by class name
+  // Smooth scroll function
   const handleScroll = (galleryClass: string) => {
     const gallery = document.querySelector(`.${galleryClass}`);
     gallery?.scrollBy({ left: 300, behavior: "smooth" });
   };
 
   return (
-    <main className="bg-background roboto-slab min-h-screen">
-      {/* Header */}
-      <div>
+    <main className="bg-background roboto-slab min-h-screen overflow-hidden">
+      {/* ===== Header ===== */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="max-w-8xl mx-auto px-4 md:px-0 py-12 md:py-16">
           <h1 className="text-4xl roboto-slab md:text-6xl font-black text-center mb-4">
             PRODUCTS
@@ -25,12 +41,17 @@ export function Products() {
             Crafted With Care, Designed To Impress.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Content */}
+      {/* ===== Content Sections ===== */}
       <div className="max-w-7xl md:max-w-[90vw] lg:max-w-[84vw] mx-auto px-4 md:px-0 py-12 space-y-24">
-        {/* Stamps Section */}
-        <section>
+        {/* === Stamps Section === */}
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Stamps
@@ -55,11 +76,24 @@ export function Products() {
               </svg>
             </button>
           </div>
-          <Gallery products={STAMP_PRODUCTS} galleryClass="stamp-gallery" />
-        </section>
 
-        {/* Visiting Cards Section */}
-        <section>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Gallery products={STAMP_PRODUCTS} galleryClass="stamp-gallery" />
+          </motion.div>
+        </motion.section>
+
+        {/* === Visiting Cards Section === */}
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Visiting Cards
@@ -84,11 +118,19 @@ export function Products() {
               </svg>
             </button>
           </div>
-          <Gallery
-            products={VISITING_CARD_PRODUCTS}
-            galleryClass="visiting-gallery"
-          />
-        </section>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Gallery
+              products={VISITING_CARD_PRODUCTS}
+              galleryClass="visiting-gallery"
+            />
+          </motion.div>
+        </motion.section>
       </div>
     </main>
   );

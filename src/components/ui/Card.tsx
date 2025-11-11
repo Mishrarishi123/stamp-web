@@ -17,7 +17,7 @@ export function Card({ name, rating, description, image }: CardProps) {
       </div>
       {/* content */}
       <div>
-        <h1 className="text-[20px] font-semibold py-1">{name}</h1>
+        <h1 className="text-[18px] w-max font-semibold py-1">{name}</h1>
       </div>
 
       {/* rating */}

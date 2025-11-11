@@ -24,7 +24,7 @@ export const SLIDES: Slide[] = [
     title: "About Us",
     subtitle: "A legacy of precision and reliability.",
     description:
-      "Verma Stamps is more than just a name; it's a legacy of precision and reliability",
+      "Verma Stamps is more than just a name it's a legacy of precision and reliability",
     backgroundImage: bg2,
   },
   {

@@ -45,7 +45,7 @@ export const STAMP_PRODUCTS = [
     name: "Pre Inking Stamp",
     rating: 4.5,
     description:
-      "A Pre Inking Stamp To Create Clean Impressions With Long Lasting Ink",
+      "A pre-inked stamp for clean impressions and long-lasting ink.",
     image: stamp3,
   },
   {
@@ -53,23 +53,21 @@ export const STAMP_PRODUCTS = [
     name: "paper Embosser stamp",
     rating: 4.5,
     description:
-      "A Professional Heavy Stamp Official Impressions For Businesses",
+      "A professional, heavy-duty stamp for official business impressions.",
     image: stamp4,
   },
   {
     id: 5,
     name: "dater stamp",
     rating: 4.5,
-    description:
-      "A dater stamp with adjustable dates for organized documentation.",
+    description: "An adjustable dater stamp for organized documentation.",
     image: stamp5,
   },
   {
     id: 6,
     name: "pocket stamp",
     rating: 4.5,
-    description:
-      "A small, portable self-inking stamp for quick signatures or approvals.",
+    description: "A portable self-inking stamp for quick signatures/approvals.",
     image: stamp6,
   },
   {
@@ -96,7 +94,7 @@ export const VISITING_CARD_PRODUCTS = [
     name: "Modern Visiting Card",
     rating: 4.5,
     description:
-      "A modern visiting card with a clean design, bold text, and a sleek look.",
+      "A modern visiting card with a clean, sleek design and bold text.",
     image: card1,
   },
   {
@@ -111,8 +109,7 @@ export const VISITING_CARD_PRODUCTS = [
     id: 8,
     name: "Double Side Visiting Card",
     rating: 4.5,
-    description:
-      "Double Side Visiting Card With Extra Space For Information Layout",
+    description: "A two-sided card designed for extra information.",
     image: card3,
   },
   {
