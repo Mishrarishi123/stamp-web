@@ -133,7 +133,8 @@ export const VISITING_CARD_PRODUCTS = [
     id: 11,
     name: "oval visiting card",
     rating: 4.5,
-    description: "A Circular Visiting Card For Unique Design Statement",
+    description:
+      "An oval-shaped visiting card with a clean, professional design.",
     image: card6,
   },
   {

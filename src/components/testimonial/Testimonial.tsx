@@ -92,7 +92,7 @@ export default function TestimonialCarousel() {
     className="relative py-16 px-3 sm:px-4 md:px-6 lg:px-8 bg-white overflow-hidden">
       {/* Section header */}
       <div className="max-w-7xl mx-auto mb-10 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl roboto-slab text-center font-black mb-4">
+        <h2 className="text-3xl uppercase sm:text-4xl md:text-5xl lg:text-6xl roboto-slab text-center font-black mb-4">
           Testimonials
         </h2>
         <div className="py-4 sm:py-8">
