@@ -13,11 +13,13 @@ export function Card({ name, rating, description, image }: CardProps) {
     <div className="border-2 p-3 rounded-2xl">
       {/* image container */}
       <div>
-        <img src={image} alt="" className=""/>
+        <img src={image} alt="" className="" />
       </div>
       {/* content */}
       <div>
-        <h1 className="text-[18px] w-max font-semibold py-1">{name}</h1>
+        <h1 className="text-[18px] w-max font-semibold py-1 capitalize">
+          {name}
+        </h1>
       </div>
 
       {/* rating */}

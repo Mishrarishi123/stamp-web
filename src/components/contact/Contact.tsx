@@ -88,7 +88,7 @@ export default function ContactPage() {
                 Contact us by email — we’ll respond shortly.
               </p>
               <p className="text-sm font-semibold font-poppins sm:text-base text-gray-700">
-                verma.stamps@gmail.com
+                verma.stationery.and.stamps@gmail.com
               </p>
             </motion.div>
           </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
               <motion.div variants={fadeUp}>
                 <InfoCard
                   icon={<Mail className="w-5 h-5 text-black" />}
-                  text="verma.stamps@gmail.com"
+                  text="verma.stationery.and.stamps@gmail.com "
                 />
               </motion.div>
               <motion.div variants={fadeUp}>
