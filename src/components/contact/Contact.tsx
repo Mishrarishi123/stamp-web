@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import whatsapp from "../../assets/icons/whatsapp.svg";
 import instagram from "../../assets/icons/instagram.svg";
-import mail from "../../assets/icons/mail.svg";
+import googlemail from "../../assets/icons/googlemail.svg";
 
 // Animation Variants
 const fadeUp = {
@@ -30,7 +30,7 @@ export default function ContactPage() {
       <div className="grid px-8 grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0">
         {/* LEFT SECTION */}
         <motion.section
-          className="px-6 sm:px-8 lg:px-12 py-12 lg:py-20 flex flex-col justify-center"
+          className=" sm:px-8 lg:px-12 py-12 lg:py-20 flex flex-col justify-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -103,7 +103,13 @@ export default function ContactPage() {
           variants={fadeUp}
         >
           <motion.div
-            className="bg-black rounded-b-2xl sm:rounded-b-4xl p-4 sm:p-10 lg:p-6 xl:p-12 max-w-lg mx-auto w-full lg:max-w-none"
+            className="
+    bg-black 
+    rounded-2xl sm:rounded-3xl   /* Fully rounded on mobile */
+    lg:rounded-b-2xl lg:rounded-t-none /* Only bottom-rounded on large screens */
+    p-4 sm:p-10 lg:p-6 xl:p-12 
+    max-w-lg mx-auto w-full lg:max-w-none
+  "
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -149,25 +155,35 @@ export default function ContactPage() {
                 variants={fadeUp}
               >
                 <a
-                  href="#"
+                  href="https://wa.me/+918989657680"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
                   aria-label="WhatsApp"
                 >
-                  <img src={whatsapp} alt="" className="h-8" />
+                  <img src={whatsapp} alt="Chat on WhatsApp" className="h-8" />
                 </a>
+
                 <a
-                  href="#"
+                  href="https://www.instagram.com/verma.stationery.and.stamps/?utm_source=ig_web_button_share_sheet"
                   className="hover:opacity-80 transition-opacity"
                   aria-label="Instagram"
                 >
                   <img src={instagram} alt="" className="h-8" />
                 </a>
+
                 <a
-                  href="#"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=verma.stationery.and.stamps@gmail.com&su=Inquiry%20from%20Website&body=Hello%2C%20I%20would%20like%20to%20know%20about..."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
-                  aria-label="Google"
+                  aria-label="Send Email"
                 >
-                  <img src={mail} alt="" className="h-8" />
+                  <img
+                    src={googlemail}
+                    alt="Send Email"
+                    className="h-7.5 w-10"
+                  />
                 </a>
               </motion.div>
             </motion.div>

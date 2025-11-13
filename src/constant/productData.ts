@@ -28,16 +28,14 @@ export const STAMP_PRODUCTS = [
     id: 1,
     name: "Rubber Stamps",
     rating: 4.5,
-    description:
-      "A rubber stamp that automatically re-inks itself from an internal pad.",
+    description: "Classic wooden stamp for crafts, logos, or office use.",
     image: stamp1,
   },
   {
     id: 2,
     name: "Signature Stamp",
     rating: 4.5,
-    description:
-      "Simplify your signing process with our self-inking signature stamp.",
+    description: "Simplify signing with our self-inking stamps.",
     image: stamp2,
   },
   {

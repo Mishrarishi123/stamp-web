@@ -110,8 +110,8 @@ export default function TestimonialCarousel() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
       >
         {/* Left & Right gradient fades */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 sm:w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 sm:w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+        <div className="hidden lg:block pointer-events-none absolute left-0 top-0 h-full w-20 sm:w-24 bg-linear-to-r from-white via-white/80 to-transparent z-10" />
+        <div className="hidden lg:block pointer-events-none absolute right-0 top-0 h-full w-20 sm:w-24 bg-linear-to-l from-white via-white/80 to-transparent z-10" />
 
         {/* Continuous Auto Scroll (pauses on hover) */}
         {isInView && (

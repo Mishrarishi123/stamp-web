@@ -14,9 +14,20 @@ type Product = {
 interface GalleryProps {
   products: Product[];
   galleryClass?: string; // 👈 allow passing a custom class
+  onViewDetails?: (product: {
+    id: number;
+    name: string;
+    rating: number;
+    description: string;
+    image: string;
+  }) => void;
 }
 
-export function Gallery({ products, galleryClass = "gallery" }: GalleryProps) {
+export function Gallery({
+  products,
+  galleryClass = "gallery",
+  onViewDetails,
+}: GalleryProps) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -81,19 +92,23 @@ export function Gallery({ products, galleryClass = "gallery" }: GalleryProps) {
           msOverflowStyle: "none",
         }}
       >
-        {products.map((product: Product) => (
-          <div key={product.id} className="min-w-[260px] sm:min-w-[270px]">
-            <Card
-              id={
-                typeof product.id === "number" ? product.id : Number(product.id)
-              }
-              name={product.name}
-              rating={product.rating}
-              description={product.description}
-              image={product.image}
-            />
-          </div>
-        ))}
+        {products.map((product: Product) => {
+          const normalizedId =
+            typeof product.id === "number" ? product.id : Number(product.id);
+
+          return (
+            <div key={product.id} className="min-w-[260px] sm:min-w-[270px]">
+              <Card
+                onViewDetails={onViewDetails ?? (() => {})}
+                id={normalizedId}
+                name={product.name}
+                rating={product.rating}
+                description={product.description}
+                image={product.image}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Hide scrollbars */}

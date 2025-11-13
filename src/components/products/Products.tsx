@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Gallery } from "../ui/Gallery";
+import ProductDetails from "./ProductDetails";
 import {
   STAMP_PRODUCTS,
   VISITING_CARD_PRODUCTS,
@@ -17,11 +19,32 @@ const fadeUp = {
   },
 };
 
+type Product = {
+  id: number;
+  name: string;
+  rating: number;
+  description: string;
+  image: string;
+};
+
 export function Products() {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const handleViewDetails = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedProduct(null);
+  };
+
   // Smooth scroll function
-  const handleScroll = (galleryClass: string) => {
+  const handleScroll = (galleryClass: string, direction: "left" | "right") => {
     const gallery = document.querySelector(`.${galleryClass}`);
-    gallery?.scrollBy({ left: 300, behavior: "smooth" });
+    if (!gallery) return;
+
+    const scrollAmount = direction === "right" ? 300 : -300;
+    gallery.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
   return (
@@ -56,25 +79,49 @@ export function Products() {
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Stamps
             </h2>
-            <button
-              onClick={() => handleScroll("stamp-gallery")}
-              className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
-              aria-label="Scroll stamps right"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex gap-2">
+              {/* Left Scroll Button */}
+              <button
+                onClick={() => handleScroll("stamp-gallery", "left")}
+                className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+                aria-label="Scroll stamps left"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Right Scroll Button */}
+              <button
+                onClick={() => handleScroll("stamp-gallery", "right")}
+                className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+                aria-label="Scroll stamps right"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <motion.div
@@ -83,7 +130,11 @@ export function Products() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <Gallery products={STAMP_PRODUCTS} galleryClass="stamp-gallery" />
+            <Gallery
+              products={STAMP_PRODUCTS}
+              galleryClass="stamp-gallery"
+              onViewDetails={handleViewDetails}
+            />
           </motion.div>
         </motion.section>
 
@@ -98,25 +149,49 @@ export function Products() {
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Visiting Cards
             </h2>
-            <button
-              onClick={() => handleScroll("visiting-gallery")}
-              className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
-              aria-label="Scroll visiting cards right"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex gap-2">
+              {/* Left Scroll Button */}
+              <button
+                onClick={() => handleScroll("visiting-gallery", "left")}
+                className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+                aria-label="Scroll visiting cards left"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Right Scroll Button */}
+              <button
+                onClick={() => handleScroll("visiting-gallery", "right")}
+                className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
+                aria-label="Scroll visiting cards right"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <motion.div
@@ -128,10 +203,12 @@ export function Products() {
             <Gallery
               products={VISITING_CARD_PRODUCTS}
               galleryClass="visiting-gallery"
+              onViewDetails={handleViewDetails}
             />
           </motion.div>
         </motion.section>
       </div>
+      <ProductDetails product={selectedProduct} onClose={handleCloseDetails} />
     </main>
   );
 }
