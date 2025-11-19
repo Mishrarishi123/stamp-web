@@ -38,7 +38,7 @@ export default function ContactPage() {
         >
           <div className="max-w-lg">
             {/* Header */}
-            <motion.h1
+            {/* <motion.h1
               className="text-4xl roboto-slab sm:text-5xl xl:text-6xl font-bold text-black mb-4"
               variants={fadeUp}
             >
@@ -50,10 +50,10 @@ export default function ContactPage() {
             >
               Contact us to create your perfect stamp today and make your
               impression
-            </motion.p>
+            </motion.p> */}
 
             {/* Phone Section */}
-            <motion.div className="mb-10 lg:mb-6 xl:mb-6" variants={fadeUp}>
+            {/* <motion.div className="mb-10 lg:mb-6 xl:mb-6" variants={fadeUp}>
               <h2 className="text-xl font-poppins sm:text-2xl font-bold text-black mb-3">
                 Phone
               </h2>
@@ -63,10 +63,10 @@ export default function ContactPage() {
               <p className="text-sm sm:text-base font-semibold text-black">
                 Mobile: 9826018246
               </p>
-            </motion.div>
+            </motion.div> */}
 
             {/* Office Section */}
-            <motion.div className="mb-10 lg:mb-6 xl:mb-6" variants={fadeUp}>
+            {/* <motion.div className="mb-10 lg:mb-6 xl:mb-6" variants={fadeUp}>
               <h2 className="text-xl font-poppins sm:text-2xl font-bold text-black mb-3">
                 Office
               </h2>
@@ -77,10 +77,10 @@ export default function ContactPage() {
                 20B, Dhenu Market Rd, Meera Path, Dhenu Market, Indore, Madhya
                 Pradesh 452003
               </p>
-            </motion.div>
+            </motion.div> */}
 
             {/* Email Section */}
-            <motion.div variants={fadeUp}>
+            {/* <motion.div variants={fadeUp}>
               <h2 className="text-xl font-poppins sm:text-2xl font-bold text-black mb-3">
                 Email
               </h2>
@@ -90,7 +90,21 @@ export default function ContactPage() {
               <p className="text-sm font-semibold font-poppins sm:text-base text-gray-700">
                 verma.stationery.and.stamps@gmail.com
               </p>
-            </motion.div>
+            </motion.div> */}
+
+            <div>
+              <div style={{ width: "100%", height: "70vh" }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.588436637613!2d75.8694393!3d22.7212128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdfd4a8b3083%3A0x2488d1f7a347cf7c!2sVerma%20Stationery%20%26%20Stamps!5e0!3m2!1sen!2sin!4v1731650000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </motion.section>
 
@@ -211,4 +225,3 @@ function InfoCard({ icon, text }: { icon: React.ReactNode; text: string }) {
     </div>
   );
 }
-

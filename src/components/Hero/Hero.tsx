@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+// import { ChevronRight } from "lucide-react";
 import { SLIDES } from "../../constant/SlideData";
 
 export default function HeroSwiper() {
@@ -119,7 +119,7 @@ export default function HeroSwiper() {
               {SLIDES[currentSlide].description}
             </motion.p>
 
-            <motion.button
+            {/* <motion.button
               className="group px-4 py-3 lg:px-4 lg:py-4 flex items-center gap-3 roboto-slab bg-white text-gray-900 rounded-2xl lg:text-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -130,7 +130,7 @@ export default function HeroSwiper() {
                 size={24}
                 className="text-gray-900 transition-transform duration-300 group-hover:translate-x-1"
               />
-            </motion.button>
+            </motion.button> */}
           </div>
         </motion.div>
       </AnimatePresence>
