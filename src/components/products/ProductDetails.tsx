@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 
@@ -34,11 +33,11 @@ export default function ProductDetails({
     "Ideal For: Office Documents, Invoices, Packages, etc.",
   ];
 
-  // ✅ Updated WhatsApp share function
+  //  Updated WhatsApp share function
   const handleWhatsappShare = () => {
     if (!product) return;
 
-    const phoneNumber = "+91 9263641797"; // 🔁 Replace this with your WhatsApp number
+    const phoneNumber = "+91 9343309480"; //  Replace this with your WhatsApp number
     const message = `Hello! I’m interested in *${
       product.name
     }*.\n\nCould you please share more details?\n\nProduct link: ${
@@ -150,7 +149,7 @@ export default function ProductDetails({
                 </ul>
               </div>
 
-              {/* ✅ WhatsApp Button with direct number */}
+              {/*  WhatsApp Button with direct number */}
               <button
                 type="button"
                 onClick={handleWhatsappShare}
