@@ -1,12 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo/logo.svg";
 
+import SkeletonHeader from "./SkeletonHeader"; // ⬅ IMPORTANT
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  //  Add loading state for skeleton
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate header loading for smooth UX
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  //  Show Skeleton first
+  if (loading) return <SkeletonHeader />;
 
   const navItems = [
     { label: "HOME", href: "#hero" },
@@ -26,9 +40,9 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 80, damping: 12 }}
+     
       className="fixed top-0 left-0 w-full bg-white shadow-md py-4 px-6 md:px-10 lg:px-20 z-50"
     >
       <div className="flex justify-between items-center">
@@ -85,24 +99,9 @@ const Header = () => {
         >
           <button
             onClick={(e) => handleScroll(e, "#contact")}
-            className="border-2 border-black
-             px-6 text-lg xl:text-xl py-2 rounded-2xl font-medium 
-                       text-black hover:text-blue-500 hover:border-blue-500 transition-all flex items-center gap-2 shadow-sm"
+            className="border-2 border-black px-6 text-lg xl:text-xl py-2 rounded-2xl font-medium text-black hover:text-blue-500 hover:border-blue-500 transition-all flex items-center gap-2 shadow-sm"
           >
             Get In Touch
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
           </button>
         </motion.div>
 
@@ -147,9 +146,7 @@ const Header = () => {
                   animate="visible"
                   variants={{
                     hidden: {},
-                    visible: {
-                      transition: { staggerChildren: 0.1 },
-                    },
+                    visible: { transition: { staggerChildren: 0.1 } },
                   }}
                   className="flex-1"
                 >
@@ -181,19 +178,6 @@ const Header = () => {
                   className="w-full border-2 px-4 text-lg py-3 hover:text-blue-700 rounded-2xl font-medium hover:border-blue-400 flex items-center justify-center gap-2 transition-all mt-6"
                 >
                   Get In Touch
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
                 </motion.button>
               </div>
             </motion.div>

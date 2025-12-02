@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Gallery } from "../ui/Gallery";
 import ProductDetails from "./ProductDetails";
@@ -8,6 +8,7 @@ import {
   STAMP_PRODUCTS,
   VISITING_CARD_PRODUCTS,
 } from "../../constant/productData";
+import ProductSkeleton from "./ProductsSkeleton"; //  Import skeleton
 
 // === Animation Variants ===
 const fadeUp = {
@@ -30,6 +31,18 @@ type Product = {
 export function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  // ✅ Loading state for skeleton
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulated load (you can switch this to API loading)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleViewDetails = (product: Product) => {
     setSelectedProduct(product);
   };
@@ -38,7 +51,7 @@ export function Products() {
     setSelectedProduct(null);
   };
 
-  // Smooth scroll function
+  // Smooth scroll function (Slider animation)
   const handleScroll = (galleryClass: string, direction: "left" | "right") => {
     const gallery = document.querySelector(`.${galleryClass}`);
     if (!gallery) return;
@@ -47,6 +60,16 @@ export function Products() {
     gallery.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
+  // ======================
+  //   SHOW SKELETON HERE
+  // ======================
+  if (loading) {
+    return <ProductSkeleton />;
+  }
+
+  // ======================
+  //   NORMAL UI BELOW
+  // ======================
   return (
     <main className="bg-background roboto-slab min-h-screen overflow-hidden">
       {/* ===== Header ===== */}
@@ -79,8 +102,9 @@ export function Products() {
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Stamps
             </h2>
+
+            {/* Scroll Buttons */}
             <div className="flex gap-2">
-              {/* Left Scroll Button */}
               <button
                 onClick={() => handleScroll("stamp-gallery", "left")}
                 className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
@@ -101,7 +125,6 @@ export function Products() {
                 </svg>
               </button>
 
-              {/* Right Scroll Button */}
               <button
                 onClick={() => handleScroll("stamp-gallery", "right")}
                 className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
@@ -149,8 +172,8 @@ export function Products() {
             <h2 className="text-2xl md:text-4xl font-bold text-foreground">
               Visiting Cards
             </h2>
+
             <div className="flex gap-2">
-              {/* Left Scroll Button */}
               <button
                 onClick={() => handleScroll("visiting-gallery", "left")}
                 className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
@@ -171,7 +194,6 @@ export function Products() {
                 </svg>
               </button>
 
-              {/* Right Scroll Button */}
               <button
                 onClick={() => handleScroll("visiting-gallery", "right")}
                 className="text-foreground bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors p-2"
@@ -208,6 +230,7 @@ export function Products() {
           </motion.div>
         </motion.section>
       </div>
+
       <ProductDetails product={selectedProduct} onClose={handleCloseDetails} />
     </main>
   );
