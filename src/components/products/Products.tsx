@@ -31,7 +31,7 @@ type Product = {
 export function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // ✅ Loading state for skeleton
+  //  Loading state for skeleton
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

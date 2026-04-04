@@ -66,15 +66,15 @@ export default function ProductDetails({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 md:py-8"
-      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex  items-center justify-center bg-black/60 px-4 py-6 md:py-8"
+      // onClick={handleOverlayClick}
     >
       <div className="relative w-full max-w-6xl h-[70vh] md:max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-xl">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="fixed right-4 top-4 rounded-full border border-gray-300 bg-white/90 p-2 text-gray-600 hover:text-black transition"
+          className=" absolute right-6 mt-4 rounded-full border border-gray-300 bg-red-500/90 hover:bg-red-600 p-2 text-white  hover:text-white transition"
           aria-label="Close product details"
         >
           <X className="h-5 w-5" />
@@ -82,7 +82,10 @@ export default function ProductDetails({
 
         {/* Content */}
         <div className="py-8 px-4 md:px-8">
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+            
             {/* Left Column - Product Images */}
             <div className="flex flex-col items-center space-y-6">
               {/* Main Product Image */}
