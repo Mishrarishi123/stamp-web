@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "./common/Footer";
 import Header from "./common/Header";
 import HeroSwiper from "./components/Hero/Hero";
 import AboutUs from "./components/about/AboutUs";
@@ -38,6 +39,8 @@ export default function App() {
           <Contact />
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }
