@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
+import { PRODUCT_FEATURES } from "../../constant/ProductDetails";
 
 type ProductDetailsProps = {
   product: {
@@ -8,7 +9,7 @@ type ProductDetailsProps = {
     name: string;
     rating: number;
     description: string;
-    image: string;
+    image: any;
   } | null;
   onClose: () => void;
 };
@@ -23,15 +24,17 @@ export default function ProductDetails({
     setMainImage(0);
   }, [product?.id]);
 
-  const features = [
-    "Pre-Inked & Ready To Use – No Additional Ink Pad Required",
-    "High-Definition Impression – Neat and Professional Output",
-    "Durable & Long-Lasting – Designed For Daily Usage",
-    "Quick & Smooth Operation – Easy One-Press Mechanism",
-    "Refillable – Can Be Re-Inked For Extended Use",
-    "Compact & Lightweight – Easy To Carry and Store",
-    "Ideal For: Office Documents, Invoices, Packages, etc.",
-  ];
+  // const features = [
+  //   "Pre-Inked & Ready To Use – No Additional Ink Pad Required",
+  //   "High-Definition Impression – Neat and Professional Output",
+  //   "Durable & Long-Lasting – Designed For Daily Usage",
+  //   "Quick & Smooth Operation – Easy One-Press Mechanism",
+  //   "Refillable – Can Be Re-Inked For Extended Use",
+  //   "Compact & Lightweight – Easy To Carry and Store",
+  //   "Ideal For: Office Documents, Invoices, Packages, etc.",
+  // ];
+
+  const features: string[] = product ? PRODUCT_FEATURES[product.id] || [] : [];
 
   //  Updated WhatsApp share function
   const handleWhatsappShare = () => {
@@ -126,7 +129,7 @@ export default function ProductDetails({
             </div>
 
             {/* Right Column - Details */}
-            <div className="space-y-6">
+     <div className="space-y-6">
               {/* Title */}
               <div>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -143,12 +146,16 @@ export default function ProductDetails({
                   Key Features
                 </h2>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  {features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-blue-600 font-bold">•</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
+                {features.length ? (
+                 features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                 <span className="text-blue-600 font-bold">•</span>
+      <span>{feature}</span>
+    </li>
+        ))
+       ) : (
+                 <p className="text-sm text-gray-500">No features available</p>
+                  )}
                 </ul>
               </div>
 
