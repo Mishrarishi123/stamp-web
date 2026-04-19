@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { PRODUCT_FEATURES } from "../../constant/ProductDetails";
 
@@ -58,9 +58,6 @@ export default function ProductDetails({
     }
   };
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) onClose();
-  };
 
   if (!product) return null;
 
