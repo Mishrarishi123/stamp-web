@@ -40,7 +40,7 @@ export default function ProductDetails({
   const handleWhatsappShare = () => {
     if (!product) return;
 
-    const phoneNumber = "+91 9343309480"; //  Replace this with your WhatsApp number
+    const phoneNumber = "+91 9109687171"; //  Replace this with your WhatsApp number
     const message = `Hello! I’m interested in *${
       product.name
     }*.\n\nCould you please share more details?\n\nProduct link: ${
