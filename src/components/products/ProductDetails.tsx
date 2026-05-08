@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { PRODUCT_FEATURES } from "../../constant/ProductDetails";
@@ -24,28 +25,17 @@ export default function ProductDetails({
     setMainImage(0);
   }, [product?.id]);
 
-  // const features = [
-  //   "Pre-Inked & Ready To Use – No Additional Ink Pad Required",
-  //   "High-Definition Impression – Neat and Professional Output",
-  //   "Durable & Long-Lasting – Designed For Daily Usage",
-  //   "Quick & Smooth Operation – Easy One-Press Mechanism",
-  //   "Refillable – Can Be Re-Inked For Extended Use",
-  //   "Compact & Lightweight – Easy To Carry and Store",
-  //   "Ideal For: Office Documents, Invoices, Packages, etc.",
-  // ];
+  const features: string[] = product
+    ? PRODUCT_FEATURES[product.id] || []
+    : [];
 
-  const features: string[] = product ? PRODUCT_FEATURES[product.id] || [] : [];
-
-  //  Updated WhatsApp share function
+  // Updated WhatsApp share function
   const handleWhatsappShare = () => {
     if (!product) return;
 
-    const phoneNumber = "+91 9109687171"; //  Replace this with your WhatsApp number
-    const message = `Hello! I’m interested in *${
-      product.name
-    }*.\n\nCould you please share more details?\n\nProduct link: ${
-      typeof window !== "undefined" ? window.location.href : ""
-    }`;
+    const phoneNumber = "+91 9109687171";
+
+    const message = `Hello! I'm interested in *${product.name}*.\n\nCould you please share more details about this product?`;
 
     if (typeof window !== "undefined") {
       window.open(
@@ -58,23 +48,19 @@ export default function ProductDetails({
     }
   };
 
-
   if (!product) return null;
 
   const thumbnailImages = [product.image].filter(Boolean);
   const activeImage = thumbnailImages[mainImage] ?? product.image;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex  items-center justify-center bg-black/60 px-4 py-6 md:py-8"
-      // onClick={handleOverlayClick}
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 md:py-8">
       <div className="relative w-full max-w-6xl h-[70vh] md:max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-xl">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className=" absolute right-6 mt-4 rounded-full border border-gray-300 bg-red-500/90 hover:bg-red-600 p-2 text-white  hover:text-white transition"
+          className="absolute right-6 mt-4 rounded-full border border-gray-300 bg-red-500/90 hover:bg-red-600 p-2 text-white transition"
           aria-label="Close product details"
         >
           <X className="h-5 w-5" />
@@ -82,10 +68,7 @@ export default function ProductDetails({
 
         {/* Content */}
         <div className="py-8 px-4 md:px-8">
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-
-            
             {/* Left Column - Product Images */}
             <div className="flex flex-col items-center space-y-6">
               {/* Main Product Image */}
@@ -126,12 +109,13 @@ export default function ProductDetails({
             </div>
 
             {/* Right Column - Details */}
-     <div className="space-y-6">
+            <div className="space-y-6">
               {/* Title */}
               <div>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
                   {product.name}
                 </h1>
+
                 <p className="mt-2 text-sm text-gray-500">
                   ⭐ Rated {product.rating}/5
                 </p>
@@ -142,28 +126,31 @@ export default function ProductDetails({
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">
                   Key Features
                 </h2>
+
                 <ul className="space-y-2 text-sm text-gray-700">
-                {features.length ? (
-                 features.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                 <span className="text-blue-600 font-bold">•</span>
-      <span>{feature}</span>
-    </li>
-        ))
-       ) : (
-                 <p className="text-sm text-gray-500">No features available</p>
+                  {features.length ? (
+                    features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <p className="text-sm text-gray-500">
+                      No features available
+                    </p>
                   )}
                 </ul>
               </div>
 
-              {/*  WhatsApp Button with direct number */}
+              {/* WhatsApp Button */}
               <button
                 type="button"
                 onClick={handleWhatsappShare}
                 className="flex w-full items-center justify-center gap-2 rounded-md bg-green-600 py-3 text-white text-sm md:text-base font-semibold transition-colors hover:bg-green-700"
               >
                 <MessageCircle className="h-5 w-5" />
-                Contact or Share on WhatsApp
+                Contact on WhatsApp
               </button>
             </div>
           </div>

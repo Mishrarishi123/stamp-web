@@ -169,7 +169,7 @@ export default function ContactPage() {
                 variants={fadeUp}
               >
                 <a
-                  href="https://wa.me/+919343309480"
+                  href="https://wa.me/+919109687171"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
